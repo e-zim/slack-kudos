@@ -4,7 +4,7 @@ const FindGIF = DefineFunction({
   callback_id: "find_gif",
   title: "Find a GIF",
   description: "Search for a GIF that matches the vibe",
-  source_file: "functions/find-gif/mod.ts",
+  source_file: "functions/find_gif/mod.ts",
   input_parameters: {
     properties: {
       vibe: {
