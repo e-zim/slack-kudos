@@ -22,7 +22,7 @@ const FindGIF = DefineFunction({
       },
       alt_text: {
         type: Schema.types.string,
-        description: "image alternature text",
+        description: "description of the GIF",
       },
     },
     required: ["URL"],

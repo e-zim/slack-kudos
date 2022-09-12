@@ -1,5 +1,5 @@
 import { DefineWorkflow, Schema } from "deno-slack-sdk/mod.ts";
-import { FindGIF } from "../functions/index.ts";
+import FindGIF from "../functions/find_gif/definition.ts";
 
 const ShareKudos = DefineWorkflow({
   callback_id: "share_kudos_workflow",
@@ -39,7 +39,7 @@ const kudo = ShareKudos.addStep(
         long: true,
       }, {
         name: "kudo_vibe",
-        title: "What is this kudo's \"vibe\"?",
+        title: 'What is this kudo\'s "vibe"?',
         description: "What sorts of energy is given off?",
         type: Schema.types.string,
         enum: [
@@ -66,8 +66,9 @@ ShareKudos.addStep(Schema.slack.functions.SendMessage, {
     type: "section",
     text: {
       type: "mrkdwn",
-      text: `*Hey <@${kudo.outputs.fields.doer_of_good_deeds}>!* Someone wanted to share some kind words with you :otter:`,
-    }
+      text:
+        `*Hey <@${kudo.outputs.fields.doer_of_good_deeds}>!* Someone wanted to share some kind words with you :otter:`,
+    },
   }, {
     type: "divider",
   }, {
@@ -80,7 +81,7 @@ ShareKudos.addStep(Schema.slack.functions.SendMessage, {
       type: "image",
       image_url: gif.outputs.URL,
       alt_text: gif.outputs.alt_text,
-    }
+    },
   }],
 });
 

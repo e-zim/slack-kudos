@@ -14,7 +14,7 @@ const getEnergy = (vibe: string): string => {
   if (vibe === "Thankful for great teamwork ⚽️") return "thankful";
   if (vibe === "Amazed at awesome work ☄️") return "amazed";
   if (vibe === "Excited for the future 🎉") return "excited";
-  if (vibe === "No vibes, just plants 🪴") return "vibes";
+  if (vibe === "No vibes, just plants 🪴") return "plants";
   return "otter"; // 🦦
 };
 
@@ -25,7 +25,9 @@ const matchVibe = (vibe: string): GIF => {
   return matches[randomGIF];
 };
 
-const selectGIF: SlackFunctionHandler<typeof FindGIF.definition> = ({ inputs }) => {
+const selectGIF: SlackFunctionHandler<typeof FindGIF.definition> = (
+  { inputs },
+) => {
   const { vibe } = inputs;
   const gif = matchVibe(vibe);
   return { outputs: gif };
