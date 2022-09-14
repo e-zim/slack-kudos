@@ -100,11 +100,11 @@ To stop running locally, press `<CTRL> + C` to end the process.
 
 ### Updating the GIF Catalog
 
-The GIFs that accompony a kudo are selected randomly after filtering against
-the user-input `kudo_vibe` from the `OpenForm` step of the workflow.
+The GIFs that accompony a kudo are selected randomly after filtering against the
+user-input `kudo_vibe` from the `OpenForm` step of the workflow.
 
-This GIF catalog can be found in the `./functions/find_gif/gifs.json`
-file and fixed to your fancies!
+This GIF catalog can be found in the `./functions/find_gif/gifs.json` file and
+fixed to your fancies!
 
 ```javascript
 // ./functions/find_gif/gifs.json
