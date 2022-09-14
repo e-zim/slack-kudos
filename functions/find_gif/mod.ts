@@ -1,5 +1,5 @@
-import type { SlackFunctionHandler } from "deno-slack-sdk/types.ts";
-import type FindGIF from "./definition.ts";
+import { SlackFunction } from "deno-slack-sdk/mod.ts";
+import FindGIF from "./definition.ts";
 import gifs from "./gifs.json" assert { type: "json" };
 
 interface GIF {
@@ -14,7 +14,7 @@ const getEnergy = (vibe: string): string => {
   if (vibe === "Thankful for great teamwork ⚽️") return "thankful";
   if (vibe === "Amazed at awesome work ☄️") return "amazed";
   if (vibe === "Excited for the future 🎉") return "excited";
-  if (vibe === "No vibes, just plants 🪴") return "vibes";
+  if (vibe === "No vibes, just plants 🪴") return "plants";
   return "otter"; // 🦦
 };
 
@@ -25,10 +25,8 @@ const matchVibe = (vibe: string): GIF => {
   return matches[randomGIF];
 };
 
-const selectGIF: SlackFunctionHandler<typeof FindGIF.definition> = ({ inputs }) => {
+export default SlackFunction(FindGIF, ({ inputs }) => {
   const { vibe } = inputs;
   const gif = matchVibe(vibe);
   return { outputs: gif };
-};
-
-export default selectGIF;
+});

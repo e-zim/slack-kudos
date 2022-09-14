@@ -1,6 +1,6 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
-import { FindGIF } from "./functions/index.ts";
-import { ShareKudos } from "./workflows/share-kudos.ts";
+import FindGIF from "./functions/find_gif/definition.ts";
+import { ShareKudos } from "./workflows/share_kudos.ts";
 
 export default Manifest({
   name: "Kudo",
