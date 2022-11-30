@@ -62,27 +62,10 @@ const gif = ShareKudos.addStep(FindGIF, {
 
 ShareKudos.addStep(Schema.slack.functions.SendMessage, {
   channel_id: kudo.outputs.fields.kudo_channel,
-  message: [{
-    type: "section",
-    text: {
-      type: "mrkdwn",
-      text:
-        `*Hey <@${kudo.outputs.fields.doer_of_good_deeds}>!* Someone wanted to share some kind words with you :otter:`,
-    },
-  }, {
-    type: "divider",
-  }, {
-    type: "section",
-    text: {
-      type: "mrkdwn",
-      text: `${kudo.outputs.fields.kudo_message}`,
-    },
-    accessory: {
-      type: "image",
-      image_url: gif.outputs.URL,
-      alt_text: gif.outputs.alt_text,
-    },
-  }],
+  message:
+    `*Hey <@${kudo.outputs.fields.doer_of_good_deeds}>!* Someone wanted to share some kind words with you :otter:\n` +
+    `> ${kudo.outputs.fields.kudo_message}\n` +
+    `${gif.outputs.URL}`,
 });
 
 export { ShareKudos };
