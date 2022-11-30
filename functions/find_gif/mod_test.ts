@@ -15,3 +15,14 @@ Deno.test("Find a GIF with the appreciation tag", async () => {
   const { outputs } = await FindGIF(createContext({ inputs }));
   assertArrayIncludes(expectedGIFs, [outputs?.URL]);
 });
+
+Deno.test("Ensure otter gifs are returned if no vibe is selected", async () => {
+  const inputs = { vibe: "" };
+  const expectedGIFs = [
+    "https://media1.giphy.com/media/MbAlP79yMRysHKUyHV/giphy-downsized.gif",
+    "https://media0.giphy.com/media/tQAApm4PMOpiM/giphy.gif",
+  ];
+
+  const { outputs } = await FindGIF(createContext({ inputs }));
+  assertArrayIncludes(expectedGIFs, [outputs?.URL]);
+});
